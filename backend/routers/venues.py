@@ -14,7 +14,7 @@ async def list_venues(
     page: int=1,
     ) -> List[VenueDB]:
 
-    RESULTS_PER_PAGE = 10
+    RESULTS_PER_PAGE = 5
     skip = (page - 1) * RESULTS_PER_PAGE
     query = {"active":active}
     full_query = request.app.mongodb["venues"].find(query).sort("name",1).skip(skip).limit(RESULTS_PER_PAGE)
