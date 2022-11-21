@@ -1,26 +1,25 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import VenueForm from "../components/VenueForm";
-import { wait } from "../../utils";
 import { venueValidator } from "../venueValidators";
 import { useNavigate } from 'react-router-dom';
+import Layout from '../../components/Layout';
 
 let BASE_URL = "http://localhost:8000/venues/"
 
-const NewVenueForm = () => {
+const NewVenue = () => {
 
-  const [venue, setVenue] = useState({})
   const [error, setError] = useState([])
   const navigate = useNavigate();
 
   const initialValues = {
-    name: 'TEST',
-    shortName: 'te',
-    street: 's',
-    zipCode: '12',
-    city: 'b',
+    name: '',
+    shortName: '',
+    street: '',
+    zipCode: '',
+    city: '',
     country: 'Deutschland',
-    latitude: '1',
-    longitude: '2',
+    latitude: '',
+    longitude: '',
     active: false,
   };
 
@@ -43,17 +42,8 @@ const NewVenueForm = () => {
       setError(errArray)
     } else {
       setError([])
-      navigate('/admin/venues')
+      navigate("/admin/venues", { state: { message: "Erfolgreich gespeichert" } });
     }
-    // try {
-    //   console.log("Submitting: ", values);
-    //   //await wait(2000);
-    //   setVenue(values);
-    //   console.log("Venue: ", venue)
-    //   alert("Success");
-    // } catch (error) {
-    //   alert("FailXXX");
-    // }
   };
 
   const validate = (values) => {
@@ -61,20 +51,27 @@ const NewVenueForm = () => {
     return errors;
   };
 
+  const handleCancel = () => {
+    navigate('/admin/venues')
+  }
+
   const formProps = {
     initialValues,
     validate, // or validationSchema. Check example validation schema in validators.js file
     onSubmit,
     enableReinitialize: false,
+    handleCancel,
     isNew: true,
   };
 
   return (
-    <div>
-      <h2>Neue Spielfläche</h2>
-      <VenueForm {...formProps} />
-    </div>
+    <Layout>
+      <div>
+        <h2>Neue Spielfläche</h2>
+        <VenueForm {...formProps} />
+      </div>
+    </Layout>
   );
 }
 
-export default NewVenueForm
+export default NewVenue

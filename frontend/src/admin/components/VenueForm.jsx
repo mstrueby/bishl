@@ -1,12 +1,13 @@
 import React from 'react'
 import { useFormik} from 'formik'
-import { getFormItemValidateStatus, getFormItemError } from "../../utils"
+// import { getFormItemValidateStatus, getFormItemError } from "../../utils"
 
 const VenueForm = ({
     initialValues,
     validate, // or validateSchema,
     onSubmit,
     enableReinitialize,
+    handleCancel,
     isNew
 }) => {
     const formik = useFormik({
@@ -131,6 +132,7 @@ const VenueForm = ({
             />
 
             <button type="submit">Speichern</button>
+            <button type="button" onClick={handleCancel}>Abbrechen</button>
         </form>
     )
 }

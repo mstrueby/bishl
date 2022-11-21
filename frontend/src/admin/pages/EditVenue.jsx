@@ -1,14 +1,13 @@
 import {useState, useEffect} from 'react'
 import {useParams, useNavigate} from "react-router-dom"
 import VenueForm from "../components/VenueForm";
-import { wait } from "../../utils";
 import { venueValidator } from "../venueValidators";
+import Layout from '../../components/Layout';
 
 
 let BASE_URL = "http://localhost:8000/venues/"
 
-// const EditVenueForm = ({ venue, setVenue }) => {
-const EditVenueForm = () => {
+const EditVenue = () => {
 
   let {id} = useParams()
   const [venue, setVenue] = useState({})
@@ -16,19 +15,6 @@ const EditVenueForm = () => {
   const navigate = useNavigate();
 
   const initialValues = { ...venue }
-
-  // const getVenue = async () => {
-  //   const res = await fetch(`${BASE_URL}${id}`)
-  //   if (!res.ok) {
-  //     setError("Error fetching venue")
-  //   } else {
-  //     const data = await res.json()
-  //     setVenue(data)
-  //     // console.log("getVenue (setVenue): ", venue, data.name)
-  //     // setPrice(data.price)
-  //   }
-  //   // setIsPending(false)
-  // }
 
   const onSubmit = async (values, actions) => {
     const response = await fetch(`${BASE_URL}${id}`,{
@@ -38,8 +24,8 @@ const EditVenueForm = () => {
       },
       body: JSON.stringify(values)
     })
-
     const data = await response.json()
+
     if(!response.ok) {
       let errArray = data.detail.map(el=>{
         return `${el.loc[1]} -${el.msg}`
@@ -47,16 +33,12 @@ const EditVenueForm = () => {
       setError(errArray)
     } else {
       setError([])
-      navigate('/admin/venues')
+      navigate("/admin/venues", { state: { message: "Erfolgreich gespeichert" } });
     }
-    // try {
-    //   console.log("Updating: ", values);
-    //   await wait(2000);
-    //   setVenue(values);
-    //   alert("Success");
-    // } catch (error) {
-    //   alert("Fail");
-    // }
+
+    //actions.setSubmitting(false);
+    //actions.setStatus({message: response.data.message});
+
   };
 
   const validate = (values) => {
@@ -64,11 +46,16 @@ const EditVenueForm = () => {
     return errors;
   };
 
+  const handleCancel = () => {
+    navigate('/admin/venues')
+  }
+
   const formProps = {
     initialValues,
     validate,
     onSubmit,
     enableReinitialize: true,
+    handleCancel,
     isNew: false,
   };
 
@@ -80,20 +67,20 @@ const EditVenueForm = () => {
       } else {
         const data = await res.json()
         setVenue(data)
-        // console.log("getVenue (setVenue): ", venue, data.name)
-        // setPrice(data.price)
       }
     }
     getVenue();
     // setIsPending(false)
   }, [id])
-  
+
   return (
-    <div>
-      <h2>Spielfläche ändern</h2>
-      <VenueForm {...formProps} />
-    </div>
+    <Layout>
+      <div>
+        <h2>Spielfläche ändern</h2>
+        <VenueForm {...formProps} />
+      </div>
+    </Layout>
   );
 }
 
-export default EditVenueForm
+export default EditVenue
