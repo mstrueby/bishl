@@ -10,13 +10,14 @@ router = APIRouter()
 @router.get("/", response_description="List all venues")
 async def list_venues(
     request: Request,
-    active: bool=True,
+    # active: bool=True,
     page: int=1,
     ) -> List[VenueDB]:
 
-    RESULTS_PER_PAGE = 5
+    RESULTS_PER_PAGE = 50
     skip = (page - 1) * RESULTS_PER_PAGE
-    query = {"active":active}
+    # query = {"active":active}
+    query = {}
     full_query = request.app.mongodb["venues"].find(query).sort("name",1).skip(skip).limit(RESULTS_PER_PAGE)
     results = [VenueDB(**raw_venue) async for raw_venue in full_query]
     return results

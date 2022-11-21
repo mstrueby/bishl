@@ -4,10 +4,11 @@ import Layout from '../../components/Layout'
 import VenueForm from '../components/VenueForm'
 import { useFormik} from 'formik'
 import NewVenueForm from '../container/NewVenueForm'
+import EditVenueForm from '../container/EditVenueForm'
 
 const AdmVenue = () => {
 
-  // let { id } = useParams()
+  let { id } = useParams()
 
   // const validate = values => {
   //   const errors = {};
@@ -44,14 +45,16 @@ const AdmVenue = () => {
   //   },
   // });
 
-  const [venue, setVenue] = useState(null);
+  //const [venue, setVenue] = useState(null);
   
   return (
     <Layout>
-      { !venue ? (
-        <NewVenueForm setVenue={setVenue} />
-      ) : (
-        <p>Call EditVenueForm</p>
+      { !id ? (
+          // <NewVenueForm setVenue={setVenue} />
+          <NewVenueForm />
+        ) : (
+          // <EditVenueForm setVenue={setVenue} />
+          <EditVenueForm />
       )}
     </Layout>
   )

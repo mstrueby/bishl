@@ -5,35 +5,17 @@ import Card from '../components/Card'
 
 const Venues = () => {
   const [venues, setVenues] = useState([])
-  const [name, setName] = useState('')
-  const [isPending, setIsPending] = useState(true)
-
-  const handleChangeName = (ev) => {
-    setVenues([])        
-    setName(ev.target.value)
-    setIsPending(true)
-}
 
   useEffect(() => {
-    fetch(`http://localhost:8000/venues?name=${name}`)
+    fetch(`http://localhost:8000/venues`)
       .then(response=>response.json())
-      .then(json=>setVenues(json))
-      setIsPending(false)
-  },[name])
+      .then(json=>{setVenues(json)})
+  },[])
 
   return (
     <Layout>
-      <h2>Spielstätten - {name?name:"Alle"}</h2>
+      <h2>Spielstätten</h2>
       <div>
-        <label htmlFor='venues'>Spielstätte wählen: </label>
-        <select name="venues" id="venues" onChange={handleChangeName}>
-          <option value="">Alle</option>
-          <option value="Poststadion">Poststadion</option>
-        </select>
-      </div>
-      <div>
-        {isPending && <div>
-          <h2>Loading venues...</h2></div>}
         <div>
           {venues && venues.map(
             (el)=>{

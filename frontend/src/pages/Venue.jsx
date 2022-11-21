@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 const Venue = () => {
   return (
     <Layout>
-      <div>Venue</div>
+      <div>Venue - Detailansicht ... to do</div>
     </Layout>
   )
 }

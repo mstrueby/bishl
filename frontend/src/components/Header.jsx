@@ -20,7 +20,10 @@ const Header = () => {
                     <NavLink className={({ isActive }) => isActive ? "active-link" : "flex items-center px-4 -mb-1 border-b-2 border-transparent"} to="/venues">Spielstätten</NavLink>
                 </li>
                 <li className="flex">
-                    <NavLink className={({ isActive }) => isActive ? "active-link" : "flex items-center px-4 -mb-1 border-b-2 border-transparent"} to="/newvenue">Neue Spielstätte</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "active-link" : "flex items-center px-4 -mb-1 border-b-2 border-transparent"} to="/admin/venues">Spielstätten - Admin</NavLink>
+                </li>
+                <li className="flex">
+                    <NavLink className={({ isActive }) => isActive ? "active-link" : "flex items-center px-4 -mb-1 border-b-2 border-transparent"} to="/admin/newvenue">Neue Spielstätte</NavLink>
                 </li>
                 
             </ul>

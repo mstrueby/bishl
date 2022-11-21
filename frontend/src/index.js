@@ -8,7 +8,8 @@ import {
 
 import Venue from './pages/Venue'
 import Venues from './pages/Venues'
-import NewVenue from './pages/NewVenue'
+import AdmVenue from './admin/pages/AdmVenue'
+import AdmVenues from './admin/pages/AdmVenues'
 
 
 import './index.css';
@@ -22,8 +23,10 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="venues" element={<Venues />} />
-        <Route path="newvenue" element={<NewVenue />} />
-        <Route path="venue/:id" element={<Venue />} />
+        <Route path="venues/:id" element={<Venue />} />
+        <Route path="admin/venues" element={<AdmVenues />} />
+        <Route path="admin/venues/:id" element={<AdmVenue />} />
+        <Route path="admin/newvenue" element={<AdmVenue />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
