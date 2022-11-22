@@ -29,7 +29,7 @@ root.render(
         <Route path="admin/leaguemanager" element={<LmDashboard />} />
         <Route path="admin/venues" element={<LmVenues />} />
         <Route path="admin/venues/:id" element={<LmEditVenue />} />
-        <Route path="admin/newvenue" element={<LmNewVenue />} />
+        <Route path="admin/venues/new" element={<LmNewVenue />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

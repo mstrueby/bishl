@@ -75,14 +75,20 @@ const LmEditVenue = () => {
 
   return (
     <Layout>
-      <div>
-        <LmSidebar />
-      </div>
-      <div>
-        <h2>Spielfläche ändern</h2>
-        <VenueForm {...formProps} />
-      </div>
-    </Layout>
+      <main className="relative">
+        <div className="mx-auto max-w-screen-xl pb-6 lg:pb-16">
+          <div className="overflow-hidden bg-white">
+            <div className="divide-y divide-gray-200 md:grid md:grid-cols-12 md:divide-y-0 md:divide-x">
+              <LmSidebar />
+              <div className="px-4 md:px-8 py-6 md:col-span-9">
+                <h2>Spielfläche ändern</h2>
+                <VenueForm {...formProps} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </Layout >
   );
 }
 

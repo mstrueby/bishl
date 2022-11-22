@@ -30,22 +30,22 @@ const NavBar = () => {
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+          <div className="mx-auto max-w-7xl px-2 sm:px-4 md:px-8 ">
             <div className="flex h-16 justify-between">
-              <div className="flex px-2 lg:px-0">
+              <div className="flex px-2 md:px-0">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="block h-8 w-auto lg:hidden"
+                    className="block h-8 w-auto md:hidden"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                     alt="Your Company"
                   />
                   <img
-                    className="hidden h-8 w-auto lg:block"
+                    className="hidden h-8 w-auto md:block"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                     alt="Your Company"
                   />
                 </div>
-                <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
+                <div className="hidden md:ml-6 md:flex md:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
                   <NavLink 
                     className={({ isActive }) => isActive ? itemActive : item}
@@ -74,8 +74,8 @@ const NavBar = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
-                <div className="w-full max-w-lg lg:max-w-xs">
+              {/* <div className="flex flex-1 items-center justify-center px-2 md:ml-6 md:justify-end">
+                <div className="w-full max-w-lg md:max-w-xs">
                   <label htmlFor="search" className="sr-only">
                     Suche
                   </label>
@@ -92,8 +92,8 @@ const NavBar = () => {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="flex items-center lg:hidden">
+              </div> */}
+              <div className="flex items-center md:hidden">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Open main menu</span>
@@ -104,7 +104,7 @@ const NavBar = () => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="hidden lg:ml-4 lg:flex lg:items-center">
+              <div className="hidden md:ml-4 md:flex md:items-center">
                 {/* <button
                   type="button"
                   className="flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -172,7 +172,7 @@ const NavBar = () => {
             </div>
           </div>
 
-          <Disclosure.Panel className="lg:hidden">
+          <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 pt-2 pb-3">
               {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
               <Disclosure.Button

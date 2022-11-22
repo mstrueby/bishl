@@ -1,3 +1,4 @@
+import LayoutTest from "./components/LayoutTest";
 import Layout from "./components/Layout";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
         <h1 className="bg-slate-500 text-white">New BISHL</h1>
       </div>
     </Layout>
+    // <LayoutTest/>
   );
 }
 
