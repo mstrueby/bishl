@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 
 let BASE_URL = "http://localhost:8000/venues/"
 
-const NewVenue = () => {
+const LmNewVenue = () => {
 
   const [error, setError] = useState([])
   const navigate = useNavigate();
@@ -74,4 +74,4 @@ const NewVenue = () => {
   );
 }
 
-export default NewVenue
+export default LmNewVenue

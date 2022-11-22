@@ -1,15 +1,15 @@
-import {useState, useEffect} from 'react'
-import {useParams, useNavigate} from "react-router-dom"
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from "react-router-dom"
 import VenueForm from "../components/VenueForm";
 import { venueValidator } from "../venueValidators";
 import Layout from '../../components/Layout';
-
+import LmSidebar from '../components/LmSidebar'
 
 let BASE_URL = "http://localhost:8000/venues/"
 
-const EditVenue = () => {
+const LmEditVenue = () => {
 
-  let {id} = useParams()
+  let { id } = useParams()
   const [venue, setVenue] = useState({})
   const [error, setError] = useState([])
   const navigate = useNavigate();
@@ -17,17 +17,17 @@ const EditVenue = () => {
   const initialValues = { ...venue }
 
   const onSubmit = async (values, actions) => {
-    const response = await fetch(`${BASE_URL}${id}`,{
-      method:"PATCH",
-      headers:{
-        'Content-Type':'application/json'
+    const response = await fetch(`${BASE_URL}${id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(values)
     })
     const data = await response.json()
 
-    if(!response.ok) {
-      let errArray = data.detail.map(el=>{
+    if (!response.ok) {
+      let errArray = data.detail.map(el => {
         return `${el.loc[1]} -${el.msg}`
       })
       setError(errArray)
@@ -59,7 +59,7 @@ const EditVenue = () => {
     isNew: false,
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     async function getVenue() {
       const res = await fetch(`${BASE_URL}${id}`)
       if (!res.ok) {
@@ -76,6 +76,9 @@ const EditVenue = () => {
   return (
     <Layout>
       <div>
+        <LmSidebar />
+      </div>
+      <div>
         <h2>Spielfläche ändern</h2>
         <VenueForm {...formProps} />
       </div>
@@ -83,4 +86,4 @@ const EditVenue = () => {
   );
 }
 
-export default EditVenue
+export default LmEditVenue

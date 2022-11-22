@@ -8,9 +8,10 @@ import {
 
 import Venue from './pages/Venue'
 import Venues from './pages/Venues'
-import AdmVenues from './admin/pages/AdmVenues'
-import EditVenue from './admin/pages/EditVenue'
-import NewVenue from './admin/pages/NewVenue'
+import LmVenues from './admin/pages/LmVenues'
+import LmEditVenue from './admin/pages/LmEditVenue'
+import LmNewVenue from './admin/pages/LmNewVenue'
+import LmDashboard from './admin/pages/LmDashboard';
 
 
 import './index.css';
@@ -25,9 +26,10 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="venues" element={<Venues />} />
         <Route path="venues/:id" element={<Venue />} />
-        <Route path="admin/venues" element={<AdmVenues />} />
-        <Route path="admin/venues/:id" element={<EditVenue />} />
-        <Route path="admin/newvenue" element={<NewVenue />} />
+        <Route path="admin/leaguemanager" element={<LmDashboard />} />
+        <Route path="admin/venues" element={<LmVenues />} />
+        <Route path="admin/venues/:id" element={<LmEditVenue />} />
+        <Route path="admin/newvenue" element={<LmNewVenue />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
