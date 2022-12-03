@@ -33,7 +33,7 @@ const LmEditVenue = () => {
       setError(errArray)
     } else {
       setError([])
-      navigate("/admin/venues", { state: { message: "Erfolgreich gespeichert" } });
+      navigate("/admin/venues", { state: { message: "Spielfläche erfolgreich gespeichert" } });
     }
 
     //actions.setSubmitting(false);

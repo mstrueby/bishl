@@ -2,8 +2,7 @@ import { useState } from 'react'
 import VenueForm from "../components/VenueForm";
 import { venueValidator } from "../venueValidators";
 import { useNavigate } from 'react-router-dom';
-import Layout from '../../components/Layout';
-import LmSidebar from '../components/LmSidebar';
+import AdmLayout from '../../components/AdmLayout';
 
 let BASE_URL = "http://localhost:8000/venues/"
 
@@ -43,7 +42,7 @@ const LmNewVenue = () => {
       setError(errArray)
     } else {
       setError([])
-      navigate("/admin/venues", { state: { message: "Erfolgreich gespeichert" } });
+      navigate("/admin/venues", { state: { message: "Spielstätte erfolgreich angelegt." } });
     }
   };
 
@@ -66,21 +65,15 @@ const LmNewVenue = () => {
   };
 
   return (
-    <Layout>
-      <main className="relative">
-        <div className="mx-auto max-w-screen-xl pb-6 lg:pb-16">
-          <div className="overflow-hidden bg-white">
-            <div className="divide-y divide-gray-200 md:grid md:grid-cols-12 md:divide-y-0 md:divide-x">
-              <LmSidebar />
-              <div className="px-4 md:px-8 py-6 md:col-span-9">
-                <h2>Neue Spielfläche</h2>
-                <VenueForm {...formProps} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </Layout >
+    <AdmLayout>
+      <div className="border-b border-gray-200 pb-5 sm:flex sm:items-center sm:justify-between">
+        <h3 className="text-lg font-medium leading-6 text-gray-900">Neue Spielstätte</h3>
+      </div>
+      <div>
+        <VenueForm {...formProps} />
+      </div>
+
+    </AdmLayout >
   );
 }
 
