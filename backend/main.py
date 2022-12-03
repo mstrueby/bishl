@@ -4,6 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import uvicorn
 from routers.venues import router as venues_router
 from fastapi.middleware.cors import CORSMiddleware
+import certifi
 
 
 DB_URL = config('DB_URL', cast=str)
@@ -22,7 +23,7 @@ app.add_middleware(
 @app.on_event("startup")
 
 async def startup_db_client():
-    app.mongodb_client = AsyncIOMotorClient(DB_URL)
+    app.mongodb_client = AsyncIOMotorClient(DB_URL, tlsCAFile=certifi.where())
     app.mongodb = app.mongodb_client[DB_NAME]
 
 @app.on_event("shutdown")

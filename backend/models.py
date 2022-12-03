@@ -23,11 +23,14 @@ class MongoBaseModel(BaseModel):
     class Config:
         json_encoders = {ObjectId: str}
 
+class ClubBase(MongoBaseModel):
+    pass
+
 class VenueBase(MongoBaseModel):
     name: str = Field(...)
     shortName: str = Field(...)
     street: str = Field(...)
-    zipCode: int = Field(...)
+    zipCode: str = Field(...)
     city: str = Field(...)
     country: str = Field(...)
     latitude: float = Field(...)
@@ -37,14 +40,14 @@ class VenueBase(MongoBaseModel):
     active: bool = False
     legacyId: int = None
 
-class ClubBase(MongoBaseModel):
+class VenueDB(VenueBase):
     pass
 
 class VenueUpdate(MongoBaseModel):
     name: Optional[str] = None
     shortName: Optional[str] = None
     street: Optional[str] = None
-    zipCode: Optional[int] = None
+    zipCode: Optional[str] = None
     city: Optional[str] = None
     country: Optional[str] = None
     latitude: Optional[float] = None
@@ -52,6 +55,3 @@ class VenueUpdate(MongoBaseModel):
     image: Optional[str] = None
     description: Optional[str] = None
     active: Optional[bool] = None
-
-class VenueDB(VenueBase):
-    pass

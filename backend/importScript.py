@@ -1,5 +1,6 @@
 import csv
 from fastapi.encoders import jsonable_encoder
+import certifi
 
 # dotenv environment variables
 from dotenv import dotenv_values
@@ -16,7 +17,7 @@ with open("../data/venues.csv",encoding='utf-8') as f:
 from pymongo import MongoClient
 client = MongoClient()
 
-client = MongoClient(config['DB_URL'])
+client = MongoClient(config['DB_URL'], tlsCAFile=certifi.where())
 db = client[config['DB_NAME']]
 #cars = db[config['COLLECTION_NAME']]
 venues = db[config['COLLECTION_NAME']]
@@ -26,7 +27,6 @@ venues = db[config['COLLECTION_NAME']]
 for rec in name_records:
 
     try:
-        rec['zipCode'] = int(rec['zipCode'])
         rec['legacyId'] = int(rec['legacyId'])
         rec['latitude'] = float(rec['latitude'])
         rec['longitude'] = float(rec['longitude'])
