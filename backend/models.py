@@ -1,5 +1,6 @@
 from bson import ObjectId
-from pydantic import Field, BaseModel
+from datetime import date
+from pydantic import Field, BaseModel, HttpUrl, EmailStr
 from typing import Optional
 
 class PyObjectId(ObjectId):
@@ -23,8 +24,45 @@ class MongoBaseModel(BaseModel):
     class Config:
         json_encoders = {ObjectId: str}
 
+# Clubs
+# ------------
+
 class ClubBase(MongoBaseModel):
+    name: str = Field(...)
+    addressName: str = None
+    street: str = None
+    zipCode: str = None
+    city: str = None
+    country: str = Field(...)
+    email: EmailStr = None
+    dateOfFoundation: date = None
+    description: str = None
+    website: HttpUrl = None
+    ishdId: int = None
+    active: bool = False
+    legacyId: int = None
+
+class ClubDB(ClubBase):
     pass
+
+class ClubUpdate(MongoBaseModel):
+    name: Optional[str] = None
+    addressName: Optional[str] = None
+    street: Optional[str] = None
+    zipCode: Optional[str] = None
+    city: Optional[str] = None
+    country: Optional[str] = None
+    email: Optional[EmailStr] = None
+    dateOfFoundation: Optional[date] = None
+    description: Optional[str] = None
+    website: Optional[HttpUrl] = None
+    ishdId: Optional[int] = None
+    active: Optional[bool] = False
+    legacyId: Optional[int] = None
+
+
+# Venues
+# ------------
 
 class VenueBase(MongoBaseModel):
     name: str = Field(...)
