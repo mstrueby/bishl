@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
-import Layout from '../../components/Layout'
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import LmSidebar from '../components/LmSidebar'
 import AdmLayout from '../../components/AdmLayout'
 import { CheckCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
 
@@ -43,7 +41,7 @@ const LmVenues = () => {
         </div>
       </div>
 
-      {(show == true && msg) &&
+      {(show ===true && msg) &&
         // <div className="rounded-md bg-green-50 p-4 my-6">
         <div className="rounded-md border-l-4 border-green-400 bg-green-50 p-4 my-6">
           <div className="flex">
@@ -106,9 +104,9 @@ const LmVenues = () => {
                             </div>
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
-                            {venue.active == true ? (
+                            {venue.active === true ? (
                                 <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-                                  Active
+                                  Aktiv
                                 </span>
                               ) : (
                                 <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">
