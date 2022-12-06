@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import VenueForm from "../components/VenueForm";
+import LmVenueForm from "../components/LmVenueForm";
 import { venueValidator } from "../venueValidators";
 import { useNavigate } from 'react-router-dom';
 import AdmLayout from '../../components/AdmLayout';
@@ -70,7 +70,7 @@ const LmNewVenue = () => {
         <h3 className="text-lg font-medium leading-6 text-gray-900">Neue Spielstätte</h3>
       </div>
       <div>
-        <VenueForm {...formProps} />
+        <LmVenueForm {...formProps} />
       </div>
 
     </AdmLayout >

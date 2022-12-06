@@ -5,7 +5,7 @@ import { CheckCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
 
 // import navigation from './LeagueManager'
 
-const LmClubs = () => {
+const LmClubList = () => {
   const [clubs, setClubs] = useState([])
   const [show, setShow] = useState(true)
   const location = useLocation();
@@ -140,4 +140,4 @@ const LmClubs = () => {
   )
 }
 
-export default LmClubs
+export default LmClubList

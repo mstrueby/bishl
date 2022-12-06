@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormik} from 'formik'
 // import { getFormItemValidateStatus, getFormItemError } from "../../utils"
 
-const VenueForm = ({
+const LmClubForm = ({
     initialValues,
     validate, // or validateSchema,
     onSubmit,
@@ -44,16 +44,16 @@ const VenueForm = ({
             />
             {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
 
-            <label htmlFor='text'>Kurzname</label>
+            <label htmlFor='text'>Anschrift (c/o)</label>
             <input
-                id="shortName"
-                name="shortName"
+                id="addressName"
+                name="addressName"
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.shortName}
+                value={formik.values.addressName}
             />
-            {formik.touched.shortName && formik.errors.shortName ? <div>{formik.errors.shortName}</div> : null}
+            {formik.touched.addressName && formik.errors.addressName ? <div>{formik.errors.addressName}</div> : null}
             
             <label htmlFor='text'>Straße</label>
             <input
@@ -99,27 +99,38 @@ const VenueForm = ({
             />
             {formik.touched.country && formik.errors.country ? <div>{formik.errors.country}</div> : null}
             
-            <label htmlFor='text'>Latitude</label>
+            <label htmlFor='text'>Gründungsjahr</label>
             <input
-                id="latitude"
-                name="latitude"
-                type="number"
+                id="dateOfFoundation"
+                name="dateOfFoundation"
+                type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.latitude}
+                value={formik.values.dateOfFoundation}
             />
-            {formik.touched.latitude && formik.errors.latitude ? <div>{formik.errors.latitude}</div> : null}
+            {formik.touched.dateOfFoundation && formik.errors.dateOfFoundation ? <div>{formik.errors.dateOfFoundation}</div> : null}
             
-            <label htmlFor='text'>Longitude</label>
+            <label htmlFor='text'>Website</label>
             <input
-                id="longitude"
-                name="longitude"
+                id="website"
+                name="website"
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.website}
+            />
+            {formik.touched.website && formik.errors.website ? <div>{formik.errors.website}</div> : null}
+            
+            <label htmlFor='text'>ISHD-ID</label>
+            <input
+                id="ishdId"
+                name="ishdId"
                 type="number"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.longitude}
+                value={formik.values.ishdId}
             />
-            {formik.touched.longitude && formik.errors.longitude ? <div>{formik.errors.longitude}</div> : null}
+            {formik.touched.ishdId && formik.errors.ishdId ? <div>{formik.errors.ishdId}</div> : null}
             
             <label htmlFor='text'>Aktiv</label>
             <input
@@ -137,4 +148,4 @@ const VenueForm = ({
     )
 }
 
-export default VenueForm
+export default LmClubForm

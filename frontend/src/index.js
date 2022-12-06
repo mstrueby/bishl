@@ -10,12 +10,12 @@ import Venue from './pages/Venue'
 import Venues from './pages/Venues'
 import LmDashboard from './admin/pages/LmDashboard';
 
-import LmClubs from './admin/pages/LmClubs'
-import LmEditClub from './admin/pages/LmEditClub'
-import LmNewClub from './admin/pages/LmNewClub'
-import LmVenues from './admin/pages/LmVenues'
-import LmEditVenue from './admin/pages/LmEditVenue'
-import LmNewVenue from './admin/pages/LmNewVenue'
+import LmClubList from './admin/pages/LmClubList'
+import LmClubEdit from './admin/pages/LmClubEdit'
+import LmClubNew from './admin/pages/LmClubNew'
+import LmVenueList from './admin/pages/LmVenueList'
+import LmVenueEdit from './admin/pages/LmVenueEdit'
+import LmVenueNew from './admin/pages/LmVenueNew'
 
 
 import './index.css';
@@ -33,13 +33,13 @@ root.render(
         
         <Route path="admin/leaguemanager" element={<LmDashboard />} />
 
-        <Route path="admin/clubs" element={<LmClubs />} />
-        <Route path="admin/clubs/:id" element={<LmEditClub />} />
-        <Route path="admin/clubs/new" element={<LmNewClub />} />
+        <Route path="admin/clubs" element={<LmClubList />} />
+        <Route path="admin/clubs/:id" element={<LmClubEdit />} />
+        <Route path="admin/clubs/new" element={<LmClubNew />} />
 
-        <Route path="admin/venues" element={<LmVenues />} />
-        <Route path="admin/venues/:id" element={<LmEditVenue />} />
-        <Route path="admin/venues/new" element={<LmNewVenue />} />
+        <Route path="admin/venues" element={<LmVenueList />} />
+        <Route path="admin/venues/:id" element={<LmVenueEdit />} />
+        <Route path="admin/venues/new" element={<LmVenueNew />} />
 
       </Routes>
     </BrowserRouter>

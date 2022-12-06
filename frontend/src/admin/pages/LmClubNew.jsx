@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import ClubForm from "../components/ClubForm";
+import LmClubForm from "../components/LmClubForm";
 import { clubValidator } from "../clubValidators";
 import { useNavigate } from 'react-router-dom';
 import AdmLayout from '../../components/AdmLayout';
 
 let BASE_URL = "http://localhost:8000/clubs/"
 
-const LmNewClub = () => {
+const LmClubNew = () => {
 
   const [error, setError] = useState([])
   const navigate = useNavigate();
@@ -72,11 +72,11 @@ const LmNewClub = () => {
         <h3 className="text-lg font-medium leading-6 text-gray-900">Neuer Verein</h3>
       </div>
       <div>
-        <ClubForm {...formProps} />
+        <LmClubForm {...formProps} />
       </div>
 
     </AdmLayout >
   );
 }
 
-export default LmNewClub
+export default LmClubNew

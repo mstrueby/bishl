@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from "react-router-dom"
-import ClubForm from "../components/ClubForm";
-import { clubValidator } from "../clubValidators";
+import LmVenueForm from "../components/LmVenueForm";
+import { venueValidator } from "../venueValidators";
 import Layout from '../../components/Layout';
 import LmSidebar from '../components/LmSidebar'
 
-let BASE_URL = "http://localhost:8000/clubs/"
+let BASE_URL = "http://localhost:8000/venues/"
 
-const LmEditClub = () => {
+const LmEditVenue = () => {
 
   let { id } = useParams()
-  const [club, setClub] = useState({})
+  const [venue, setVenue] = useState({})
   const [error, setError] = useState([])
   const navigate = useNavigate();
 
-  const initialValues = { ...club }
+  const initialValues = { ...venue }
 
   const onSubmit = async (values, actions) => {
     const response = await fetch(`${BASE_URL}${id}`, {
@@ -33,7 +33,7 @@ const LmEditClub = () => {
       setError(errArray)
     } else {
       setError([])
-      navigate("/admin/clubs", { state: { message: "Verein erfolgreich gespeichert" } });
+      navigate("/admin/venues", { state: { message: "Spielfläche erfolgreich gespeichert" } });
     }
 
     //actions.setSubmitting(false);
@@ -42,12 +42,12 @@ const LmEditClub = () => {
   };
 
   const validate = (values) => {
-    const errors = clubValidator(values);
+    const errors = venueValidator(values);
     return errors;
   };
 
   const handleCancel = () => {
-    navigate('/admin/clubs')
+    navigate('/admin/venues')
   }
 
   const formProps = {
@@ -60,16 +60,16 @@ const LmEditClub = () => {
   };
 
   useEffect(() => {
-    async function getClub() {
+    async function getVenue() {
       const res = await fetch(`${BASE_URL}${id}`)
       if (!res.ok) {
-        setError("Error fetching club")
+        setError("Error fetching venue")
       } else {
         const data = await res.json()
-        setClub(data)
+        setVenue(data)
       }
     }
-    getClub();
+    getVenue();
     // setIsPending(false)
   }, [id])
 
@@ -81,8 +81,8 @@ const LmEditClub = () => {
             <div className="divide-y divide-gray-200 md:grid md:grid-cols-12 md:divide-y-0 md:divide-x">
               <LmSidebar />
               <div className="px-4 md:px-8 py-6 md:col-span-9">
-                <h2>Verein ändern</h2>
-                <ClubForm {...formProps} />
+                <h2>Spielfläche ändern</h2>
+                <LmVenueForm {...formProps} />
               </div>
             </div>
           </div>
@@ -92,4 +92,4 @@ const LmEditClub = () => {
   );
 }
 
-export default LmEditClub
+export default LmEditVenue
