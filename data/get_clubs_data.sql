@@ -12,7 +12,7 @@ select
 	description,
     website,
     ishd_id as ishdId,
-	case published when 1 then 'true' else 'false' end as active,
+	case published when 1 then 'True' else '' end as active,
 	id as legacyId
 from jos_bishl_club
 
