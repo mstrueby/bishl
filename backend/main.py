@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from decouple import config
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
